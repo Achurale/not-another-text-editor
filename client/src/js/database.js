@@ -18,8 +18,7 @@ export const putDb = async (content) => {
     if (content===null) {
       console.log('There is nothing to be saved')
     } else {
-      console.log('Content', content);
-      console.log('Saving to database')
+      console.log('Saving now: ', content);
       const jateDB = await openDB('jate', 1)
       const tx = jateDB.transaction('jate', 'readwrite')
       const store = tx.objectStore('jate')
@@ -53,6 +52,7 @@ export const getDb = async () => {
     return result;
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
